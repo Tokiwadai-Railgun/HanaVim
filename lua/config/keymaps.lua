@@ -48,7 +48,10 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent
 vim.keymap.set('n', '<leader>t', ':ToggleTerm size=40 direction=float name=Terminal<CR>', { desc = "Terminal"})
 
 
-
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true})
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true})
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true})
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true})
 
 
 -- Which Key config

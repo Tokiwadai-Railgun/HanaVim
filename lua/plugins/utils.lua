@@ -51,5 +51,10 @@ return {
     keys = {
       { "<leader>g", "<cmd>LazyGit<cr>", desc = "LazyGit" }
     }
-  }
+  },
+  -- {
+  --   "nvimdev/dashboard-nvim",
+  --   event = "VimEnter",
+  --   dependencies = { {"nvim-tree/nvim-web-devicons"}}
+  -- }
 }
