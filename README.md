@@ -8,6 +8,7 @@
 * Lazygit with ``lazygit-nvim``
 * FileTree using ``nvim-tree``
 * ``Which-key`` to never forget keymaps
+* Dashboard using ``nvim-dashboard``
 
 # Folder Architecture
 The configuration is split between multiple folders under the "Lua folder". Keep in mind that some config also are in init.lua but they are minor / general configurations (system clipboard for example)
@@ -29,6 +30,5 @@ The configuration is split between multiple folders under the "Lua folder". Keep
 
 And Catppuccin as theme
 # Features to be added
-* [ ] Home Screen
 * [ ] Debugger (for C, Java, Rust)
 

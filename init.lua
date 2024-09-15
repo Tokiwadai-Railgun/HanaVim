@@ -5,7 +5,7 @@ vim.g.maplocalleader = "\\"
 require("config.lazy")
 require('config.editor')
 require('config.keymaps')
--- require('config.utils')
+require('config.utils')
 
 vim.cmd.colorscheme "catppuccin"
 -- stylua: ignore end
