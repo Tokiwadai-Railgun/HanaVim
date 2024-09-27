@@ -54,6 +54,23 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true})
 vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true})
 
 
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float({ border="rounded"})<cr>', { noremap=true, silent=true})
+vim.keymap.set('n', '<leader>;', '<cmd>Dashboard<cr>')
+
+-- correct error using lsp
+vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, { desc = "Correct Error"})
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = "Rename Variable"})
+
+-- In case tabstop is not set up automatically
+vim.keymap.set('n', '<leader>lt', '<cmd>lua vim.o.tabstop = 4<cr>')
+
+vim.keymap.set("n", "<Leader>rc", ":lua require('ror.commands').list_commands()<CR>", { silent = true })
+
+-- Lesser used LSP functionality
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, { desc= '[G]oto [D]eclaration'})
+
+
 -- Which Key config
 ---@class wk.Opts
 local defaults = {

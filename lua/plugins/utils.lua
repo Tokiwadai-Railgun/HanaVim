@@ -56,5 +56,10 @@ return {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     dependencies = { {"nvim-tree/nvim-web-devicons"}}
-  }
+  },
+  { -- Change appearance of features like rename in LSP & etc...
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
+  'weizheheng/ror.nvim' -- Run test un Ruby on Rails
 }

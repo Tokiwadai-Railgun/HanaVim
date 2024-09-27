@@ -68,3 +68,10 @@ db.setup({
     footer = {}  --your footer
   }
 })
+
+-- Setting up borders on documentation K
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "single" -- or "double", "rounded", "solid", "shadow"
+  }
+)
