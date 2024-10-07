@@ -27,3 +27,7 @@ require('autoclose').setup()
 -- Line numbering to show on the left
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+require("cmp").config.formatting = {
+  format = require("tailwindcss-colorizer-cmp").formatter
+}

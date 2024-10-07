@@ -11,6 +11,7 @@ require('config.editor')
 require('config.keymaps')
 require('config.utils')
 require('config.whichkey')
+require('config.lspconfig')
 
 vim.cmd.colorscheme "catppuccin"
 -- stylua: ignore end
@@ -74,7 +75,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript'},
+  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'tsx'},
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -160,7 +161,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -188,11 +189,12 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require('mason').setup()
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls', 'tailwindcss' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
   ensure_installed = servers,
+  automatic_installation = true,
 }
 
 for _, lsp in ipairs(servers) do
@@ -270,6 +272,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
   window = {
     completion = cmp.config.window.bordered(),

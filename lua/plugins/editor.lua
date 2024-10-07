@@ -6,10 +6,12 @@ return {
   'nvim-treesitter/nvim-treesitter',                                     -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter-textobjects',                         -- Additional textobjects for treesitter
   'nvim-treesitter/nvim-treesitter-context',                             -- Used to display current function name
-  'neovim/nvim-lspconfig',                                               -- Collection of configurations for built-in LSP client
+  {
+    'neovim/nvim-lspconfig'
+  },                                             -- Collection of configurations for built-in LSP client
   'williamboman/mason.nvim',                                             -- Manage external editor tooling i.e LSP servers
   'williamboman/mason-lspconfig.nvim',                                   -- Automatically install language servers to stdpath
-  'hrsh7th/cmp-nvim-lsp',
+  {'hrsh7th/cmp-nvim-lsp'},
   'saadparwaiz1/cmp_luasnip',
   { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' },
   config = function()
@@ -20,8 +22,52 @@ return {
   'nvim-lualine/lualine.nvim',                                           -- Fancier statusline
   'lukas-reineke/indent-blankline.nvim',                                 -- Add indentation guides even on blank lines
   'tpope/vim-sleuth',                                                    -- Detect tabstop and shiftwidth automatically
-  'wakatime/vim-wakatime',                                               -- Coding timespeck
   { "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
   {'akinsho/toggleterm.nvim', version = "*", config = true},
   {'m4xshen/autoclose.nvim'},
+  'evanleck/vim-svelte',
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+  { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function() 
+      require('nvim-ts-autotag').setup()
+    end
+  },
 }

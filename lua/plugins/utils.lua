@@ -61,5 +61,27 @@ return {
     'stevearc/dressing.nvim',
     opts = {},
   },
-  'weizheheng/ror.nvim' -- Run test un Ruby on Rails
+  'weizheheng/ror.nvim', -- Run test un Ruby on Rails
+  "nvim-lua/plenary.nvim",
+  {
+    "Zeioth/distroupgrade.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    event = "VeryLazy",
+    opts = {}
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  { --- Utils related to the editor : add color square for tailwindcss
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    -- optionally, override the default options:
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 2,
+      })
+    end
+  }
 }
