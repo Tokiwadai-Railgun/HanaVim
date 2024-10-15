@@ -77,7 +77,7 @@ previewToogle = false
 local function tooglePreview()
   if previewToogle == false then return '<cmd>MarkdownPreview<cr>' else return '<md>MarkdownPreviewStop<cr>' end
 end
-vim.keymap.set('n', '<leader>do', tooglePreview() ,{ desc= "Activate Markdown Preview"})
+-- vim.keymap.set('n', '<leader>do', tooglePreview() ,{ desc= "Activate Markdown Preview"})
 
 -- comment using ","
 vim.keymap.set("n", ",", "gcc", { remap = true})
@@ -86,3 +86,6 @@ vim.keymap.set("v", ",", "gcgv", { remap = true})
 -- keep visual open when indenting
 vim.keymap.set('v', '>', '>gv', { remap= true})
 vim.keymap.set('v', '<', '<gv', { remap= true})
+
+vim.keymap.set('n', '<C-e>', ':Markview<cr>', { desc="Activate Markdown preview"})
+vim.keymap.set('n', '<C-p>', ':Markview splitToggle<cr>', { desc="Activate Markdown preview in split window"})
