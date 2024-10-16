@@ -75,3 +75,5 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     border = "single" -- or "double", "rounded", "solid", "shadow"
   }
 )
+
+require('mini.files').setup()

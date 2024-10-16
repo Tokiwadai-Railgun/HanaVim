@@ -22,16 +22,19 @@ return {
       },
     },
   },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     require("nvim-tree").setup {}
+  --   end,
+  -- },
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
+    "echasnovski/mini.nvim"
   },
   {
     "kdheepak/lazygit.nvim",
@@ -83,5 +86,8 @@ return {
         color_square_width = 2,
       })
     end
-  }
+  },
+  -- Debugger
+  {"mfussenegger/nvim-dap"},
+  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
 }

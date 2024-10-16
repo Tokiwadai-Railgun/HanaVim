@@ -79,5 +79,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons"
     }
-}
+  },
+  { 'echasnovski/mini.cursorword', version = false },
+  { 'echasnovski/mini.hipatterns', version = false },
+  { 'echasnovski/mini.indentscope', version = '*' },
 }
