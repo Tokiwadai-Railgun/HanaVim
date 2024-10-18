@@ -72,12 +72,6 @@ return {
     event = "VeryLazy",
     opts = {}
   },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
   { --- Utils related to the editor : add color square for tailwindcss
     "roobert/tailwindcss-colorizer-cmp.nvim",
     -- optionally, override the default options:
@@ -87,7 +81,4 @@ return {
       })
     end
   },
-  -- Debugger
-  {"mfussenegger/nvim-dap"},
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
 }

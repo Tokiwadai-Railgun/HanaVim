@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
@@ -189,7 +188,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require('mason').setup()
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls', 'tailwindcss' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls', 'lua_ls', 'tailwindcss', 'jdtls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -275,8 +274,12 @@ cmp.setup {
     { name = 'path' },
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered()
+    completion = cmp.config.window.bordered({
+      winhighlight = "Normal:MyPmenu,FloatBorder:MyPmenu,CursorLine:PmenuSel,Search:None"
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = "Normal:MyPmenu,FloatBorder:MyPmenu,CursorLine:PmenuSel,Search:None"
+    })
   }
 }
 

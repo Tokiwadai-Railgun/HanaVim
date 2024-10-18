@@ -5,3 +5,4 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufWinEnter"}, {
   end
 })
 
+vim.cmd("highlight BorderBG guibg=NONE guifg=#00ff00")
