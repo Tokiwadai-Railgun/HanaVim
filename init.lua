@@ -234,3 +234,7 @@ require('lspconfig').lua_ls.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
+-- putting this at the end so colors are loaded after plugins
+require('config.colors')

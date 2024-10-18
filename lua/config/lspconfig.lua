@@ -1,19 +1,6 @@
 require'lspconfig'.svelte.setup{}
 require'lspconfig'.tailwindcss.setup{}
 
-
--- Cmp and LSP border configuration
-
-vim.api.nvim_set_hl(0, "BorderColor", { fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", {fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", {fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopeResultBorder", {fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", {fg= "#b4befe"})
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", {fg= "#b4befe"})
-
-
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
