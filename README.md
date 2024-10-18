@@ -12,7 +12,7 @@
 
 # Folder Architecture
 The configuration is split between multiple folders under the "Lua folder". Keep in mind that some config also are in init.lua but they are minor / general configurations (system clipboard for example)
-```structure
+```
 |____init.lua
 |____lua 
 | |____config - Dedicated to configuration of vim.opts and plugins

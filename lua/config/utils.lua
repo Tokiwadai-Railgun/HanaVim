@@ -76,4 +76,9 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   }
 )
 
-require('mini.files').setup()
+-- File explorer
+require('mini.files').setup({
+  windows = {
+    preview = true
+  }
+})
