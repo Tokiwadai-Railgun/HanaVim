@@ -90,3 +90,17 @@ vim.keymap.set('v', '<', '<gv', { remap= true})
 
 vim.keymap.set('n', '<C-e>', ':Markview<cr>', { desc="Activate Markdown preview"})
 vim.keymap.set('n', '<C-p>', ':Markview splitToggle<cr>', { desc="Activate Markdown preview in split window"})
+
+
+-- Debugger 
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set("n", "<leader>da", function()
+    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+  end,
+  { buffer = bufnr }
+)
+
+
+vim.keymap.set('n', "<leader>db", ":DapToggleBreakpoint<CR>")
+vim.keymap.set('n', "<leader>dx", ":DapTerminate<CR>")
+vim.keymap.set('n', "<leader>do", ":DapStepOver<CR>")
