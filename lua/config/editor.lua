@@ -32,7 +32,6 @@ require("cmp").config.formatting = {
   format = require("tailwindcss-colorizer-cmp").formatter
 }
 
-
 require('mini.cursorword').setup()
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({

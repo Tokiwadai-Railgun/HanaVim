@@ -55,7 +55,6 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true})
 vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true})
 
 
-vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float({ border="rounded"})<cr>', { noremap=true, silent=true})
 vim.keymap.set('n', '<leader>;', '<cmd>Dashboard<cr>')
 
@@ -93,14 +92,16 @@ vim.keymap.set('n', '<C-p>', ':Markview splitToggle<cr>', { desc="Activate Markd
 
 
 -- Debugger 
-local bufnr = vim.api.nvim_get_current_buf()
-vim.keymap.set("n", "<leader>da", function()
-    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+vim.keymap.set("n", "<leader>dA", function()
+    vim.cmd.RustLsp { 'hover', 'actions'} -- supports rust-analyzer's grouping
   end,
-  { buffer = bufnr }
+  { silent = true, desc = "Code actions for Rust"}
 )
-
-
 vim.keymap.set('n', "<leader>db", ":DapToggleBreakpoint<CR>")
 vim.keymap.set('n', "<leader>dx", ":DapTerminate<CR>")
 vim.keymap.set('n', "<leader>do", ":DapStepOver<CR>")
+vim.keymap.set('n', "<leader>dh", ":lua require('dap.ui.widgets').hover()", {desc="Vairable Value"})
+vim.keymap.set('n', "<leader>dp", ":lua require('dap.ui.widgets').preview()", {desc="Preview value of an expression"})
+
+
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })

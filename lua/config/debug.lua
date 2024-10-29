@@ -1,6 +1,7 @@
 require('mason-nvim-dap').setup({
   ensure_installed = {'rust'},
-  handlers = {}
+  handlers = {},
+  automatic_installation= true
 })
 
 require('dapui').setup()

@@ -18,7 +18,6 @@ return {
 
   end},         -- Autocompletion
   { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } },     -- Snippet Engine and Snippet Expansion
-  'mjlbach/onedark.nvim',                                                -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim',                                           -- Fancier statusline
   'lukas-reineke/indent-blankline.nvim',                                 -- Add indentation guides even on blank lines
   'tpope/vim-sleuth',                                                    -- Detect tabstop and shiftwidth automatically

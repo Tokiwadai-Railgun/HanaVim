@@ -44,11 +44,7 @@ cmp.setup {
     { name = 'path' },
   },
   window = {
-    completion = cmp.config.window.bordered({
-      winhighlight = "Normal:BorderColor,FloatBorder:BorderColor,CursorLine:PmenuSel,Search:None"
-    }),
-    documentation = cmp.config.window.bordered({
-      winhighlight = "Normal:BorderColor,FloatBorder:BorderColor,CursorLine:PmenuSel,Search:None"
-    })
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered()
   }
 }
