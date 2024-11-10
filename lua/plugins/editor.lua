@@ -82,4 +82,11 @@ return {
   { 'echasnovski/mini.cursorword', version = false },
   { 'echasnovski/mini.hipatterns', version = false },
   { 'echasnovski/mini.indentscope', version = '*' },
+  { -- To add copilot as to cmp
+  "zbirenbaum/copilot-cmp",
+  dependencies = "copilot.lua",
+  config = function()
+    require("copilot_cmp").setup()
+  end
+}
 }
