@@ -64,6 +64,17 @@ db.setup({
         key_format = ' %s', -- remove default surrounding `[]`
         action = ':Lazy'
       },
+      {
+        icon = " ",
+        icon_h1 = "Title",
+        desc = "Restore Session",
+        desc_h1 = "String",
+        key = "r",
+        keymap = "SPC r",
+        key_h1 = "Number",
+        key_format = " %s",
+        action = ":SessionRestore"
+      }
     },
     footer = {}  --your footer
   }
