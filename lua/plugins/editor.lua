@@ -88,5 +88,6 @@ return {
   config = function()
     require("copilot_cmp").setup()
   end
-}
+  },
+  { 'wakatime/vim-wakatime', lazy = false }
 }
