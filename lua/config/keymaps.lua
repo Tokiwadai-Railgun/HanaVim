@@ -63,7 +63,7 @@ vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, { desc = "Correct Err
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = "Rename Variable"})
 
 -- In case tabstop is not set up automatically
-vim.keymap.set('n', '<leader>lt', '<cmd>lua vim.o.tabstop = 4<cr>')
+vim.keymap.set('n', '<leader>lt', '<cmd>set tabstop=2 shiftwidth=4<cr>')
 
 vim.keymap.set("n", "<Leader>rc", ":lua require('ror.commands').list_commands()<CR>", { silent = true })
 

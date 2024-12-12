@@ -4,6 +4,8 @@ vim.g.maplocalleader = "\\"
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
+vim.g.wakatime_debug = true
+
 -- Install packer
 require("config.lazy")
 require('config.editor')

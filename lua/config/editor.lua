@@ -51,3 +51,10 @@ require('mini.indentscope').setup({
   symbol= "│",
   try_as_border= false
 })
+
+-- local jdtls = require('jdtlts')
+-- jdtls.start_or_attach({
+--     cmd = { 'path/to/jdtls' },  -- Path to your jdtls installation
+--     root_dir = jdtls.setup.find_root({ '.git', 'pom.xml', 'build.gradle' }),
+-- })
+

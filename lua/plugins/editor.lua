@@ -69,16 +69,6 @@ return {
       require('nvim-ts-autotag').setup()
     end
   },
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,      -- Recommended
-    -- ft = "markdown" -- If you decide to lazy-load anyway
-
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
-    }
-  },
   { 'echasnovski/mini.cursorword', version = false },
   { 'echasnovski/mini.hipatterns', version = false },
   { 'echasnovski/mini.indentscope', version = '*' },
@@ -89,5 +79,6 @@ return {
     require("copilot_cmp").setup()
   end
   },
-  { 'wakatime/vim-wakatime', lazy = false }
+  { 'wakatime/vim-wakatime', lazy = false },
+  { 'mfussenegger/nvim-jdtls' } -- Java configuration
 }
