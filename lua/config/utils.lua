@@ -74,6 +74,17 @@ db.setup({
         key_h1 = "Number",
         key_format = " %s",
         action = ":SessionRestore"
+      },
+      {
+        icon = " ",
+        icon_h1 = "Colorscheme",
+        desc = "Change colorscheme",
+        desc_h1 = "String",
+        key = "p",
+        keymap = "SPC p",
+        key_h1 = "Number",
+        key_format = " %s",
+        action = ":Telescope colorscheme"
       }
     },
     footer = {}  --your footer

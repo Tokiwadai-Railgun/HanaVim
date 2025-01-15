@@ -80,5 +80,11 @@ return {
   end
   },
   { 'wakatime/vim-wakatime', lazy = false },
-  { 'mfussenegger/nvim-jdtls' } -- Java configuration
+  { 'mfussenegger/nvim-jdtls' }, -- Java configuration
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  }
 }

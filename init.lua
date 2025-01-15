@@ -16,7 +16,7 @@ require('config.lspconfig')
 require('config.lspconfig')
 require('config.debug')
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "solarized-osaka"
 -- stylua: ignore end
 
 -- [[ Setting options ]]
