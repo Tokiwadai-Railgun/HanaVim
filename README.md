@@ -3,11 +3,11 @@
 
 
 # Plugins / Features 
-* Telescope to easly search
+* Telescope to easly search and navigate through files
 * Autocomplete using ``nvim-cmp`` (and so ``mason.nvim`` & ``mason.lspconfig``)
 * Lazygit with ``lazygit-nvim``
-* FileTree using ``nvim-tree``
-* ``Which-key`` to never forget keymaps
+* FileTree using ``mini-tree``
+* ``Which-key`` to see available keymaps
 * Dashboard using ``nvim-dashboard``
 
 # Folder Architecture
@@ -28,7 +28,11 @@ The configuration is split between multiple folders under the "Lua folder". Keep
 
 ```
 
-And Catppuccin as theme
-# Features to be added
-* [ ] Debugger (for C, Java, Rust)
+rose-pine for default theme, also available : Catppuccin and Solaried-Osaka
 
+# Basic Keymaps : 
+`<space> e` to open file explorer
+`h,j,k,l` to navigate through file explorer
+`<space> f` to open Telescope
+`<space> ;` to return to dashboard
+`<space> g` to open lazygit
