@@ -93,5 +93,6 @@ return {
       auto_restore = false,
       -- log_level = 'debug',
     }
-  }
+  },
+  { "j-hui/fidget.nvim" }
 }

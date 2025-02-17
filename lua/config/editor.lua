@@ -70,3 +70,9 @@ require('mini.indentscope').setup({
 --     root_dir = jdtls.setup.find_root({ '.git', 'pom.xml', 'build.gradle' }),
 -- })
 
+require('autoclose').setup({
+  options = {
+    disable_when_touch = true,
+    pair_spaces = true
+  }
+})

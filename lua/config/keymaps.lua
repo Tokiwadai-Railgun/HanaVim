@@ -105,3 +105,5 @@ vim.keymap.set('n', "<leader>dp", ":lua require('dap.ui.widgets').preview()", {d
 
 
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })
+
+vim.keymap.set('t', '<Esc>','<C-\\><C-n>', {noremap = true, silent = true})

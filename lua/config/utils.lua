@@ -104,3 +104,14 @@ require('mini.files').setup({
     preview = true
   }
 })
+
+
+require('fidget').setup({
+  notification = {
+    window = {
+      winblend = 0
+    }
+  }
+})
+
+vim.notify = require('fidget').notify
