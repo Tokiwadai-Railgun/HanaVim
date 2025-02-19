@@ -6,6 +6,8 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
 cmp.setup {
+  preselect = cmp.PreselectMode.None,
+  completion = { completeopt = "menu,menuone,noselect" },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -17,7 +19,7 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
