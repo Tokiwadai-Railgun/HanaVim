@@ -1,4 +1,4 @@
--- Enable Comment.nvim
+-- Enable Comment.nvimkey
 require('Comment').setup()
 
 -- Gitsigns
@@ -41,7 +41,7 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>st', "<cmd>TodoTelescope<cr>", { desc = '[S]earch [T]odos' })
 
 -- vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>e', ":lua MiniFiles.open()<cr>", { noremap = true, silent = true })
@@ -64,20 +64,13 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = "Rename Variable"
 
 -- In case tabstop is not set up automatically
 vim.keymap.set('n', '<leader>lt', '<cmd>set tabstop=2 shiftwidth=4<cr>')
+vim.keymap.set('n', '<C-t>', '<cmd>Trouble diagnostics<cr>', {desc ="Search for [T]roubles"})
+vim.keymap.set('n', '<C-f>', '<cmd>Trouble todo<cr>', {desc ="Search for [F]ixes (and todo)"})
 
 vim.keymap.set("n", "<Leader>rc", ":lua require('ror.commands').list_commands()<CR>", { silent = true })
 
 -- Lesser used LSP functionality
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, { desc= '[G]oto [D]eclaration'})
-
-
-
--- Markdown live preview
-previewToogle = false
-local function tooglePreview()
-  if previewToogle == false then return '<cmd>MarkdownPreview<cr>' else return '<md>MarkdownPreviewStop<cr>' end
-end
--- vim.keymap.set('n', '<leader>do', tooglePreview() ,{ desc= "Activate Markdown Preview"})
 
 -- comment using ","
 vim.keymap.set("n", ",", "gcc", { remap = true})

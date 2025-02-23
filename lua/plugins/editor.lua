@@ -70,7 +70,6 @@ return {
     end
   },
   { 'echasnovski/mini.cursorword', version = false },
-  { 'echasnovski/mini.hipatterns', version = false },
   { 'echasnovski/mini.indentscope', version = '*' },
   { -- To add copilot as to cmp
   "zbirenbaum/copilot-cmp",
@@ -99,6 +98,10 @@ return {
     },
     ft = { "markdown", "Avante" },
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  }
 }
 
 

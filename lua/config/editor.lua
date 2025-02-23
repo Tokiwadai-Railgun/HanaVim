@@ -49,34 +49,18 @@ require("cmp").config.formatting = {
 }
 
 require('mini.cursorword').setup()
-local hipatterns = require('mini.hipatterns')
-hipatterns.setup({
-  highlighters = {
-    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
-
-    -- Highlight hex color strings (`#rrggbb`) using that color
-    hex_color = hipatterns.gen_highlighter.hex_color(),
-  },
-})
-
 require('mini.indentscope').setup({
   symbol= "│",
   try_as_border= false
 })
-
--- local jdtls = require('jdtlts')
--- jdtls.start_or_attach({
---     cmd = { 'path/to/jdtls' },  -- Path to your jdtls installation
---     root_dir = jdtls.setup.find_root({ '.git', 'pom.xml', 'build.gradle' }),
--- })
 
 require('autoclose').setup({
   options = {
     disable_when_touch = true,
     pair_spaces = true
   }
+});
+
+
+require("todo-comments").setup({
 })
