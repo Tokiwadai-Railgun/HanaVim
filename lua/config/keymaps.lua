@@ -100,3 +100,9 @@ vim.keymap.set('n', "<leader>dp", ":lua require('dap.ui.widgets').preview()", {d
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })
 
 vim.keymap.set('t', '<Esc>','<C-\\><C-n>', {noremap = true, silent = true})
+
+function toogleInlayHint()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}))
+end
+
+vim.keymap.set('n', '<C-m>', toogleInlayHint, { desc = "Toogle inlay_hint" })

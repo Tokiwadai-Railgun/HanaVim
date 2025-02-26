@@ -63,4 +63,6 @@ require('autoclose').setup({
 
 
 require("todo-comments").setup({
-})
+});
+
+require('luasnip.loaders.from_vscode').lazy_load()

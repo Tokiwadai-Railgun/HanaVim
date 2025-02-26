@@ -17,7 +17,7 @@ return {
   config = function()
 
   end},         -- Autocompletion
-  { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } },     -- Snippet Engine and Snippet Expansion
+  { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' }, run = "make install_jsregexp" },     -- Snippet Engine and Snippet Expansion
   'nvim-lualine/lualine.nvim',                                           -- Fancier statusline
   'lukas-reineke/indent-blankline.nvim',                                 -- Add indentation guides even on blank lines
   'tpope/vim-sleuth',                                                    -- Detect tabstop and shiftwidth automatically
