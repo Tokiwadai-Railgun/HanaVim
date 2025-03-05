@@ -59,6 +59,7 @@ lspconfig.phpactor.setup {
     },
 }
 
+lspconfig.gopls.setup {}
 
 -- PHP and HTML / CSS
 lspconfig.intelephense.setup {}
