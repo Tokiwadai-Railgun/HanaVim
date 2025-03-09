@@ -85,7 +85,12 @@ end
 
 lspconfig.ls_emmet.setup { capabilities = capabilities }
 
-
+lspconfig.prismals.setup {
+    default_config = {
+        cmd = {"prisma-language-server", "--stdio"},
+        filetypes = { 'prisma' }
+    }
+}
 
 
 -- nvim-cmp setup
