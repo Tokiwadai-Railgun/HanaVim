@@ -41,13 +41,19 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>st', '<cmd>Trouble diagnostics<cr>', {desc ="[S]earch for [T]roubles"})
 vim.keymap.set('n', '<leader>st', "<cmd>TodoTelescope<cr>", { desc = '[S]earch [T]odos' })
 
 -- vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>e', ":lua MiniFiles.open()<cr>", { noremap = true, silent = true })
+vim.keymap.set('n', '<C-e>', ":lua MiniFiles.open()<cr>", { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>t', ':ToggleTerm size=40 direction=float name=Terminal<CR>', { desc = "Terminal"})
 
+function toggleTerminal()
+    require('toggleterm').toggle()
+end
+vim.keymap.set('n', '<C-t>', toggleTerminal, { desc = "Terminal"})
+vim.keymap.set('i', '<C-t>', toggleTerminal, { desc = "Terminal"})
+vim.keymap.set('t', '<C-t>', toggleTerminal, { desc = "Terminal"})
 
 vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true})
 vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true})
@@ -64,8 +70,7 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = "Rename Variable"
 
 -- In case tabstop is not set up automatically
 vim.keymap.set('n', '<leader>lt', '<cmd>set tabstop=2 shiftwidth=4<cr>')
-vim.keymap.set('n', '<C-t>', '<cmd>Trouble diagnostics<cr>', {desc ="Search for [T]roubles"})
-vim.keymap.set('n', '<C-f>', '<cmd>Trouble todo<cr>', {desc ="Search for [F]ixes (and todo)"})
+vim.keymap.set('n', '<C-f>', '<cmd>TodoTelescope<cr>', {desc ="[S]earch for Todos"})
 
 vim.keymap.set("n", "<Leader>rc", ":lua require('ror.commands').list_commands()<CR>", { silent = true })
 
@@ -80,7 +85,7 @@ vim.keymap.set("v", ",", "gcgv", { remap = true})
 vim.keymap.set('v', '>', '>gv', { remap= true})
 vim.keymap.set('v', '<', '<gv', { remap= true})
 
-vim.keymap.set('n', '<C-e>', ':Markview<cr>', { desc="Activate Markdown preview"})
+vim.keymap.set('n', '<leader>e', ':Markview<cr>', { desc="Activate Markdown preview"})
 vim.keymap.set('n', '<C-p>', ':Markview splitToggle<cr>', { desc="Activate Markdown preview in split window"})
 
 

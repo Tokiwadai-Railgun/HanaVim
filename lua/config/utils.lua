@@ -115,3 +115,7 @@ require('fidget').setup({
 })
 
 vim.notify = require('fidget').notify
+
+require('toggleterm').setup({
+    direction = "float"
+})
