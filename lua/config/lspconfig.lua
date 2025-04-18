@@ -67,7 +67,7 @@ lspconfig.intelephense.setup {}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-if not configs.ls_emmet then 
+if not configs.ls_emmet then
     configs.ls_emmet = {
         default_config = {
             cmd = { "ls_emmet", "--stdio" };
@@ -92,7 +92,6 @@ lspconfig.prismals.setup {
     }
 }
 
-
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -110,7 +109,7 @@ cmp.setup {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
+            behavior = cmp.ConfirmBehavior.Insert,
             select = false,
         },
         ['<Tab>'] = cmp.mapping(function(fallback)

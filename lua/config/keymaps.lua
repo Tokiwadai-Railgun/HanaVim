@@ -41,8 +41,7 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>st', '<cmd>Trouble diagnostics<cr>', {desc ="[S]earch for [T]roubles"})
-vim.keymap.set('n', '<leader>st', "<cmd>TodoTelescope<cr>", { desc = '[S]earch [T]odos' })
+vim.keymap.set('n', '<leader>st', '<cmd>Telescope diagnostics<cr>', {desc ="[S]earch for [T]roubles"})
 
 -- vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-e>', ":lua MiniFiles.open()<cr>", { noremap = true, silent = true })
@@ -75,7 +74,8 @@ vim.keymap.set('n', '<C-f>', '<cmd>TodoTelescope<cr>', {desc ="[S]earch for Todo
 vim.keymap.set("n", "<Leader>rc", ":lua require('ror.commands').list_commands()<CR>", { silent = true })
 
 -- Lesser used LSP functionality
-vim.keymap.set('n', '<leader>ld', vim.lsp.buf.declaration, { desc= '[G]oto [D]eclaration'})
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc= '[G]oto [D]efinition'})
+vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, { desc= '[G]oto [D]eclaration'})
 
 -- comment using ","
 vim.keymap.set("n", ",", "gcc", { remap = true})
