@@ -111,3 +111,9 @@ function toogleInlayHint()
 end
 
 vim.keymap.set('n', '<C-m>', toogleInlayHint, { desc = "Toogle inlay_hint" })
+
+-- tabs features
+vim.keymap.set('n', "<leader>tn", "<cmd>tabnew<cr>", { desc = "Create a new tab" })
+vim.keymap.set('n', "<leader>tm", ":tabmove ", { desc = "Move to a given tab number" })
+vim.keymap.set('n', "<leader>tc", "<cmd>tabclose<cr>", { desc = "close a tab" })
+vim.keymap.set('n', "<leader>to", "<cmd>tabonly<cr>", { desc = "Close all tabs escept the current" })
