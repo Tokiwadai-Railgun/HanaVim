@@ -5,8 +5,8 @@ return {
     "jay-babu/mason-nvim-dap.nvim", -- Auto install dap for each languages
 
     'mfussenegger/nvim-jdtls', -- Java integration for nevim plugin
-    { -- Rust supplementaries informations 
-        'mrcjkb/rustaceanvim',
-        lazy = false, -- This plugin is already lazy
-    },
+    -- { -- Rust supplementaries informations 
+    --     'mrcjkb/rustaceanvim',
+    --     lazy = false, -- This plugin is already lazy
+    -- },
 }

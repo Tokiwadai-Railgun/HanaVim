@@ -40,7 +40,7 @@ lspconfig.ts_ls.setup{
     }
 }
 
-lspconfig.clangd.setup{}
+-- lspconfig.clangd.setup{}
 
 lspconfig.phpactor.setup {
     cmd = { 'phpactor', 'language-server' },
@@ -63,6 +63,9 @@ lspconfig.gopls.setup {}
 
 -- PHP and HTML / CSS
 lspconfig.intelephense.setup {}
+
+lspconfig.asm_lsp.setup {}
+
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true

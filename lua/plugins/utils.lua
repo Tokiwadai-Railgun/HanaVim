@@ -95,5 +95,4 @@ return {
         }
     },
     { "j-hui/fidget.nvim" },
-    "rest-nvim/rest.nvim"
 }
