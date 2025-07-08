@@ -1,8 +1,8 @@
 require'lspconfig'.svelte.setup{}
--- require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tailwindcss.setup{}
 
 require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason-lspconfig").setup()
 
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
@@ -79,7 +79,7 @@ if not configs.ls_emmet then
                 "css",
                 "scss",
                 "javascriptreact",
-                "typescriptreact",
+                -- "typescriptreact",
                 "php"
             }
         }
@@ -99,7 +99,19 @@ lspconfig.prismals.setup {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+local lspkind = require('lspkind');
 cmp.setup {
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = {
+                menu = 50,
+                abbr = 50,
+            },
+            ellipsis_char = '...',
+            show_labelDetails = true,
+        })
+    },
     preselect = cmp.PreselectMode.None,
     completion = { completeopt = "menu,menuone,noselect" },
     snippet = {

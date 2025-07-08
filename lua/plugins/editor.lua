@@ -9,9 +9,11 @@ return {
     {
         'neovim/nvim-lspconfig'
     },                                             -- Collection of configurations for built-in LSP client
+    { "onsails/lspkind.nvim" },
     'williamboman/mason.nvim',                                             -- Manage external editor tooling i.e LSP servers
     'williamboman/mason-lspconfig.nvim',                                   -- Automatically install language servers to stdpath
     {'hrsh7th/cmp-nvim-lsp'},
+    "hrsh7th/cmp-path",
     'saadparwaiz1/cmp_luasnip',
     { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' },
         config = function()

@@ -65,4 +65,6 @@ require('autoclose').setup({
 require("todo-comments").setup({
 });
 
-require('pretty-ts-errors').setup()
+require('pretty-ts-errors').setup({
+      auto_open = false
+})
