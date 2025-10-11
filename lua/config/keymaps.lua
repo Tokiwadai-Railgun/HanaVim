@@ -117,3 +117,7 @@ vim.keymap.set('n', "<leader>tn", "<cmd>tabnew<cr>", { desc = "Create a new tab"
 vim.keymap.set('n', "<leader>tm", ":tabmove ", { desc = "Move to a given tab number" })
 vim.keymap.set('n', "<leader>tc", "<cmd>tabclose<cr>", { desc = "close a tab" })
 vim.keymap.set('n', "<leader>to", "<cmd>tabonly<cr>", { desc = "Close all tabs escept the current" })
+
+
+vim.keymap.set('n', "<leader>cc", "<cmd>make %:r<cr>", { desc = "compile the current file" })
+vim.keymap.set('n', "<leader>cr", "<cmd>!./%:r<cr>", { desc = "run the previously compiled file" })
