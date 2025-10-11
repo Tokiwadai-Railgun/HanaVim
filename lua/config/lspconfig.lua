@@ -7,152 +7,164 @@ require("mason").setup()
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 
-lspconfig.lua_ls.setup {
-    settings = {
-        Lua = {
-            hint = {
-                enable = true
-            },
-            diagnostics = {
-                globals = { "vim" }
-            }
-        }
+local lsp = vim.lsp
+
+-- === Global default configuration ===
+lsp.config('*', {
+  root_markers = { '.git' },
+  capabilities = vim.tbl_deep_extend('force',
+    vim.lsp.protocol.make_client_capabilities(),
+    {
+      textDocument = {
+        completion = { completionItem = { snippetSupport = true } },
+      },
     }
-}
+  ),
+})
 
-lspconfig.ts_ls.setup{
-    settings = {
-        typescript = {
-            tsserver = {
-                useSyntaxServer = false
-            },
-            inlayHints = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        }
-    }
-}
-
--- lspconfig.clangd.setup{}
-
-lspconfig.phpactor.setup {
-    cmd = { 'phpactor', 'language-server' },
-    filetypes = { 'php' },
-    root_dir = lspconfig.util.root_pattern('.git', '.phpactor.json', '.phpactor.yml'),
-    init_options = {
-        ['indexer.exclude_patterns'] = {
-            '/vendor/**/Tests',
-            '/vendor/**/tests/**/*',
-            '/vendor/composer/**/*',
-            '/generated/**/*',
-            '/pub/static/**/*',
-            '/var/**/*',
-            '/dev/**/*',
-        },
+-- === Lua ===
+lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      hint = { enable = true },
+      diagnostics = { globals = { 'vim' } },
     },
-}
+  },
+  filetypes = { 'lua' },
+})
 
-lspconfig.gopls.setup {}
+-- === TypeScript / JavaScript ===
+lsp.config('ts_ls', {
+  settings = {
+    typescript = {
+      tsserver = { useSyntaxServer = false },
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+})
 
--- PHP and HTML / CSS
-lspconfig.intelephense.setup {}
+-- === PHP (phpactor) ===
+lsp.config('phpactor', {
+  cmd = { 'phpactor', 'language-server' },
+  filetypes = { 'php' },
+  root_markers = { '.git', '.phpactor.json', '.phpactor.yml' },
+  init_options = {
+    ['indexer.exclude_patterns'] = {
+      '/vendor/**/Tests',
+      '/vendor/**/tests/**/*',
+      '/vendor/composer/**/*',
+      '/generated/**/*',
+      '/pub/static/**/*',
+      '/var/**/*',
+      '/dev/**/*',
+    },
+  },
+})
 
-lspconfig.asm_lsp.setup {}
+-- === Go ===
+lsp.config('gopls', {
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+})
 
+-- === PHP + HTML / CSS ===
+lsp.config('intelephense', {
+  filetypes = { 'php', 'html', 'css' },
+})
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- === Assembly ===
+lsp.config('asm_lsp', {
+  filetypes = { 'asm', 's', 'S' },
+})
 
-if not configs.ls_emmet then
-    configs.ls_emmet = {
-        default_config = {
-            cmd = { "ls_emmet", "--stdio" };
-            filetypes = {
-                "html",
-                "css",
-                "scss",
-                "javascriptreact",
-                -- "typescriptreact",
-                "php"
-            }
-        }
-    }
-end
+-- === Emmet ===
+lsp.config('ls_emmet', {
+  cmd = { 'ls_emmet', '--stdio' },
+  filetypes = { 'html', 'css', 'scss', 'javascriptreact', 'php' },
+})
 
-lspconfig.ls_emmet.setup { capabilities = capabilities }
+-- === Prisma ===
+lsp.config('prismals', {
+  cmd = { 'prisma-language-server', '--stdio' },
+  filetypes = { 'prisma' },
+})
 
-lspconfig.prismals.setup {
-    default_config = {
-        cmd = {"prisma-language-server", "--stdio"},
-        filetypes = { 'prisma' }
-    }
-}
-
--- nvim-cmp setup
+-- === nvim-cmp ===
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
 
-local lspkind = require('lspkind');
 cmp.setup {
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol",
-            maxwidth = {
-                menu = 50,
-                abbr = 50,
-            },
-            ellipsis_char = '...',
-            show_labelDetails = true,
-        })
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      maxwidth = { menu = 50, abbr = 50 },
+      ellipsis_char = '...',
+      show_labelDetails = true,
+    }),
+  },
+  preselect = cmp.PreselectMode.None,
+  completion = { completeopt = 'menu,menuone,noselect' },
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false,
     },
-    preselect = cmp.PreselectMode.None,
-    completion = { completeopt = "menu,menuone,noselect" },
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = false,
-        },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
-    },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
-    }
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 }
+
+-- === Auto-enable all configured LSPs ===
+lsp.enable({
+  'lua_ls',
+  'ts_ls',
+  'phpactor',
+  'gopls',
+  'intelephense',
+  'asm_lsp',
+  'ls_emmet',
+  'prismals',
+})
