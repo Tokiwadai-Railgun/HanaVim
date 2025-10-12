@@ -1,11 +1,5 @@
-require'lspconfig'.svelte.setup{}
-require'lspconfig'.tailwindcss.setup{}
-
 require("mason").setup()
 -- require("mason-lspconfig").setup()
-
-local lspconfig = require('lspconfig')
-local configs = require('lspconfig.configs')
 
 local lsp = vim.lsp
 
@@ -157,14 +151,53 @@ cmp.setup {
   },
 }
 
+-- === Svelte ===
+lsp.config('svelte', {
+  cmd = { 'svelteserver', '--stdio' }, -- default Mason binary
+  filetypes = { 'svelte' },
+  root_markers = { 'svelte.config.js', 'svelte.config.cjs', 'svelte.config.ts', 'package.json', '.git' },
+  settings = {
+    svelte = {
+      plugin = {
+        svelte = { compilerWarnings = { ['a11y-no-onchange'] = 'ignore' } },
+      },
+    },
+  },
+})
+
+-- === Tailwind CSS ===
+lsp.config('tailwindcss', {
+  cmd = { 'tailwindcss-language-server', '--stdio' },
+  filetypes = {
+    'html', 'css', 'scss', 'sass', 'javascript', 'javascriptreact',
+    'typescript', 'typescriptreact', 'svelte', 'vue', 'astro',
+  },
+  root_markers = { 'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.ts', 'postcss.config.js', 'package.json', '.git' },
+  settings = {
+    tailwindCSS = {
+      classAttributes = { 'class', 'className', 'ngClass' },
+      lint = {
+        cssConflict = 'warning',
+        invalidApply = 'error',
+        invalidScreen = 'error',
+        invalidVariant = 'error',
+        invalidConfigPath = 'error',
+      },
+      validate = true,
+    },
+  },
+})
+
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
   'lua_ls',
   'ts_ls',
   'phpactor',
   'gopls',
-  'intelephense',
+  -- 'intelephense',
   'asm_lsp',
-  'ls_emmet',
+  -- 'ls_emmet',
   'prismals',
+    'svelte',
+    -- 'tailwindcss'
 })
