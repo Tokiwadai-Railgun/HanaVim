@@ -1,13 +1,5 @@
 -- return {
 --   {
---     "zbirenbaum/copilot.lua",
---     cmd = "Copilot",
---     event = "InsertEnter",
---     config = function()
---       require("copilot").setup({})
---     end,
---   },
---   {
 --     "yetone/avante.nvim",
 --     event = "VeryLazy",
 --     lazy = false,
@@ -57,6 +49,14 @@
 -- }
 --
 return {
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({})
+        end,
+    },
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
