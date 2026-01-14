@@ -105,4 +105,10 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     { "youyoumu/pretty-ts-errors.nvim" },
+    {
+        'Thiago4532/mdmath.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+    }
 }

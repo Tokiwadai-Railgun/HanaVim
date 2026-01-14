@@ -3,6 +3,24 @@ require("mason").setup()
 
 local lsp = vim.lsp
 
+-- === 1. Capabilities Setup (Crucial for Autocompletion) ===
+-- We define this locally to pass it explicitly to servers that need it.
+local capabilities = vim.tbl_deep_extend(
+    'force',
+    vim.lsp.protocol.make_client_capabilities(),
+    {
+        textDocument = {
+            completion = { completionItem = { snippetSupport = true } },
+        },
+    }
+)
+
+-- Attempt to add cmp_nvim_lsp capabilities if the plugin is present
+local has_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+if has_cmp then
+    capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
+end
+
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
@@ -13,14 +31,7 @@ end
 -- === Global default configuration ===
 lsp.config('*', {
     root_markers = { '.git' },
-    capabilities = vim.tbl_deep_extend('force',
-        vim.lsp.protocol.make_client_capabilities(),
-        {
-            textDocument = {
-                completion = { completionItem = { snippetSupport = true } },
-            },
-        }
-    ),
+    capabilities = capabilities, -- Apply globally
 })
 
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "MiniFilesBorder" })
@@ -36,8 +47,33 @@ lsp.config('lua_ls', {
     filetypes = { 'lua' },
 })
 
--- === TypeScript / JavaScript ===
+-- === Vue / TypeScript Setup (The Fix) ===
+
+-- 1. Find the Vue Plugin path reliably
+local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+local vue_pkg_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+-- Fallback if the folder structure is different
+if vim.fn.isdirectory(vue_pkg_path) == 0 then
+    vue_pkg_path = mason_packages .. "/vue-language-server/node_modules/@vue/typescript-plugin"
+end
+
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_pkg_path,
+  languages = { 'vue' },
+}
+
+-- 2. TypeScript (ts_ls) - Modified to support Vue
 lsp.config('ts_ls', {
+    cmd = { 'typescript-language-server', '--stdio' },
+    -- Add 'vue' to filetypes so TS works in <script> tags
+    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'vue' },
+    capabilities = capabilities, -- Explicitly passed for safety
+    init_options = {
+        plugins = {
+            vue_plugin, -- Load the Vue plugin
+        },
+    },
     settings = {
         typescript = {
             tsserver = { useSyntaxServer = false },
@@ -53,7 +89,22 @@ lsp.config('ts_ls', {
             },
         },
     },
-    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+})
+
+-- 3. Vue (vue_ls) - Added for Template Support
+lsp.config('vue_ls', {
+    cmd = { 'vue-language-server', '--stdio' },
+    filetypes = { 'vue' },
+    capabilities = capabilities,
+    init_options = {
+        vue = {
+            hybridMode = true, -- Hand off JS/TS work to ts_ls
+        },
+        typescript = {
+            -- Point to the typescript installed by Mason to ensure template parsing works
+            tsdk = mason_packages .. "/typescript-language-server/node_modules/typescript/lib"
+        }
+    },
 })
 
 -- === PHP (phpactor) ===
@@ -89,10 +140,12 @@ lsp.config('asm_lsp', {
     filetypes = { 'asm', 's', 'S' },
 })
 
--- === Emmet ===
-lsp.config('ls_emmet', {
-    cmd = { 'ls_emmet', '--stdio' },
-    filetypes = { 'html', 'css', 'scss', 'javascriptreact', 'php' },
+-- === Emmet (Fixed) ===
+-- Switched to emmet-language-server for better "div" expansion
+lsp.config('emmet_language_server', {
+    cmd = { 'emmet-language-server', '--stdio' },
+    filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'pug', 'typescriptreact', 'vue' },
+    capabilities = capabilities,
 })
 
 -- === Prisma ===
@@ -210,12 +263,14 @@ lsp.config('tailwindcss', {
 lsp.enable({
     'lua_ls',
     'ts_ls',
+    'vue_ls', -- ADDED
     'phpactor',
     'gopls',
     -- 'intelephense',
     'asm_lsp',
-    -- 'ls_emmet',
+    'emmet_language_server', -- ADDED (replaces ls_emmet)
     'prismals',
     'svelte',
+    'jdtls'
     -- 'tailwindcss'
 })
