@@ -258,6 +258,7 @@ lsp.config('tailwindcss', {
     },
 })
 
+lsp.config('ansiblels', {})
 
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
@@ -271,6 +272,7 @@ lsp.enable({
     'emmet_language_server', -- ADDED (replaces ls_emmet)
     'prismals',
     'svelte',
-    'jdtls'
+    'jdtls',
+    "ansiblels"
     -- 'tailwindcss'
 })

@@ -110,5 +110,6 @@ return {
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
         },
-    }
+    },
+{ "mfussenegger/nvim-ansible" }
 }
