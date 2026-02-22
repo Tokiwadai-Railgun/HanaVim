@@ -141,3 +141,6 @@ require('nvim-treesitter.configs').setup {
 -- putting this at the end so colors are loaded after plugins
 require('config.colors')
 vim.g.ansible_extra_conf_files_with_extensions = 1
+
+vim.opt.foldminlines = 4 -- only fold comment greater than 4 lines
+vim.opt.fillchars = "fold: "

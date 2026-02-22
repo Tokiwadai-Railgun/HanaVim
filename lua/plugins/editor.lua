@@ -111,5 +111,12 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
     },
-{ "mfussenegger/nvim-ansible" }
+    { "mfussenegger/nvim-ansible" },
+    {
+        "soemre/commentless.nvim",
+        cmd = "Commentless",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        }
+    }
 }
