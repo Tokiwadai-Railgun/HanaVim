@@ -262,6 +262,8 @@ lsp.config('ansiblels', {})
 
 lsp.config('pyright', {})
 
+lsp.config("clangd", {})
+
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
     'lua_ls',
@@ -276,6 +278,7 @@ lsp.enable({
     'svelte',
     'jdtls',
     "ansiblels",
-    "pyright"
+    "pyright",
+    "clangd"
     -- 'tailwindcss'
 })

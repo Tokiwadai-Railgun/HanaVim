@@ -98,8 +98,9 @@ vim.keymap.set("n", "<leader>dA", function()
 vim.keymap.set('n', "<leader>db", ":DapToggleBreakpoint<CR>")
 vim.keymap.set('n', "<leader>dx", ":DapTerminate<CR>")
 vim.keymap.set('n', "<leader>do", ":DapStepOver<CR>")
-vim.keymap.set('n', "<leader>dh", ":lua require('dap.ui.widgets').hover()", {desc="Vairable Value"})
-vim.keymap.set('n', "<leader>dp", ":lua require('dap.ui.widgets').preview()", {desc="Preview value of an expression"})
+vim.keymap.set('n', "<leader>dh", ":lua require('dap.ui.widgets').hover()<cr>", {desc="Vairable Value"})
+vim.keymap.set('n', "<leader>dp", ":lua require('dap.ui.widgets').preview()<cr>", {desc="Preview value of an expression"})
+vim.keymap.set('n', "<leader>dc", ":lua require('dap').continue()<cr>", {desc="Continue debug"})
 
 
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap=true, silent=true })
@@ -130,3 +131,5 @@ end, { desc = "Toggle folding comments larger than 4 lines" })
 
 -- Disable / enable inlay hints
 
+
+--
