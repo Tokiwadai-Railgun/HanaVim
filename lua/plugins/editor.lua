@@ -111,5 +111,6 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
     },
-{ "mfussenegger/nvim-ansible" }
+{ "mfussenegger/nvim-ansible" },
+    "XadillaX/vim-automata-theme"
 }

@@ -17,7 +17,7 @@ require('config.lspconfig')
 require('config.debug')
 require('config.autocmds')
 
-vim.cmd.colorscheme "rose-pine-main"
+vim.cmd.colorscheme "automata"
 -- stylua: ignore end
 
 -- [[ Setting options ]]

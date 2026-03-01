@@ -260,6 +260,8 @@ lsp.config('tailwindcss', {
 
 lsp.config('ansiblels', {})
 
+lsp.config("bashls", {})
+
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
     'lua_ls',
@@ -273,6 +275,8 @@ lsp.enable({
     'prismals',
     'svelte',
     'jdtls',
-    "ansiblels"
+    "ansiblels",
+    "clangd",
+    "bashls"
     -- 'tailwindcss'
 })
