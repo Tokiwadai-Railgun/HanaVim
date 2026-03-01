@@ -113,4 +113,12 @@ return {
     },
 { "mfussenegger/nvim-ansible" },
     "XadillaX/vim-automata-theme"
+    { "mfussenegger/nvim-ansible" },
+    {
+        "soemre/commentless.nvim",
+        cmd = "Commentless",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        }
+    }
 }
