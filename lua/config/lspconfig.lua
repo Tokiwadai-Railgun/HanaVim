@@ -34,7 +34,7 @@ lsp.config('*', {
     capabilities = capabilities, -- Apply globally
 })
 
-vim.api.nvim_set_hl(0, "FloatBorder", { link = "MiniFilesBorder" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { link = "MiniFilesBorder" })
 
 -- === Lua ===
 lsp.config('lua_ls', {

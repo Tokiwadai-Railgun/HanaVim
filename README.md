@@ -36,3 +36,6 @@ rose-pine for default theme, also available : Catppuccin and Solaried-Osaka
 `<space> f` to open Telescope
 `<space> ;` to return to dashboard
 `<space> g` to open lazygit
+
+# Theme
+The embedded Nier theme is made by me, but the structure and the functions are taken from [datsfilipe/nvim-colorscheme-template](https://github.com/datsfilipe/nvim-colorscheme-template).

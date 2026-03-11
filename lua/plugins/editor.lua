@@ -23,7 +23,7 @@ return {
 	'nvim-lualine/lualine.nvim',                                           -- Fancier statusline
 	'lukas-reineke/indent-blankline.nvim',                                 -- Add indentation guides even on blank lines
 	'tpope/vim-sleuth',                                                    -- Detect tabstop and shiftwidth automatically
-	{ "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
+	-- { "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
 	{'akinsho/toggleterm.nvim', version = "*", config = true},
 	{'m4xshen/autoclose.nvim'},
 	'evanleck/vim-svelte',
@@ -88,10 +88,10 @@ return {
 				priority = 1000,
 				opts = {},
 			},
-			{
-				"rose-pine/neovim",
-				name="rose-pine",
-			},
+			-- {
+			-- 	"rose-pine/neovim",
+			-- 	name="rose-pine",
+			-- },
 			{
 				-- Make sure to set this up properly if you have lazy=true
 				'MeanderingProgrammer/render-markdown.nvim',
@@ -112,7 +112,6 @@ return {
 				},
 			},
 			{ "mfussenegger/nvim-ansible" },
-			"XadillaX/vim-automata-theme",
 			{ "mfussenegger/nvim-ansible" },
 			{
 				"soemre/commentless.nvim",

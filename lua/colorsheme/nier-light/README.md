@@ -1,0 +1,1 @@
+All code here is HIGHLY inspired from [datsfilipe/nvim-colorscheme-template](https://github.com/datsfilipe/nvim-colorscheme-template), simply adapted it since i do not need a whole neovim configuration, siply the theme setup

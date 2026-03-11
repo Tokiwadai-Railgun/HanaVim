@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufWinEnter"}, {
   end
 })
 
-vim.cmd("highlight BorderBG guibg=NONE guifg=#00ff00")
+-- vim.cmd("highlight BorderBG guibg=NONE guifg=#00ff00")
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),

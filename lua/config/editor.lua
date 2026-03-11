@@ -1,23 +1,23 @@
-  require('catppuccin').setup({
-    flavour = "mocha",
-    background = {
-      dark = "mocha",
-      light = "frappe"
-    },
-    transparent_background = true
-  })
+  -- require('catppuccin').setup({
+  --   flavour = "mocha",
+  --   background = {
+  --     dark = "mocha",
+  --     light = "frappe"
+  --   },
+  --   transparent_background = true
+  -- })
 
-  require('rose-pine').setup({
-    extend_background_behind_borders = true,
-    enable = {
-      terminal = true,
-      italics = true,
-      underline = true
-    },
-    styles = {
-      transparency = true,
-    }
-  })
+  -- require('rose-pine').setup({
+  --   extend_background_behind_borders = true,
+  --   enable = {
+  --     terminal = true,
+  --     italics = true,
+  --     underline = true
+  --   },
+  --   styles = {
+  --     transparency = true,
+  --   }
+  -- })
   -- Set lualine as statusline
 -- See `:help lualine.txt`
 
