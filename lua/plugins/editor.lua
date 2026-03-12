@@ -82,12 +82,12 @@ return {
 			-- },
 			{ 'wakatime/vim-wakatime', lazy = false },
 			{ 'mfussenegger/nvim-jdtls' }, -- Java configuration
-			{
-				"craftzdog/solarized-osaka.nvim",
-				lazy = false,
-				priority = 1000,
-				opts = {},
-			},
+			-- {
+			-- 	"craftzdog/solarized-osaka.nvim",
+			-- 	lazy = false,
+			-- 	priority = 1000,
+			-- 	opts = {},
+			-- },
 			-- {
 			-- 	"rose-pine/neovim",
 			-- 	name="rose-pine",

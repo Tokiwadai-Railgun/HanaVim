@@ -148,7 +148,7 @@ vim.opt.fillchars = "fold: "
 -- vim.cmd.colorscheme "automata"
 local theme = require('colorsheme.nier-light.init')
 theme.setup {
-    theme = 'dark',
+    theme = 'light',
     transparent = false,
     italics = {
         comments = false,

@@ -81,7 +81,7 @@ local function set_groups()
         MoreMsg = { fg = colorscheme.syntaxFunction },
         NonText = { fg = utils.shade(colorscheme.editorBackground, 0.30) },
         NormalFloat = { bg = colorscheme.floatingWindowBackground },
-        NormalNC = { link = 'Normal' },
+        NormalNC = { link = 'Normal', bg=bg },
         Pmenu = { link = 'NormalFloat' },
         PmenuSel = { bg = colorscheme.menuOptionBackground },
         PmenuSbar = {
@@ -104,7 +104,7 @@ local function set_groups()
             bg = colorscheme.sidebarBackground,
             fg = colorscheme.inactiveText,
         },
-        TabLineFill = { link = 'TabLine' },
+        TabLineFill = { link = 'TabLine', nocombine=true },
         TabLineSel = {
             bg = colorscheme.editorBackground,
             fg = colorscheme.emphasisText,
