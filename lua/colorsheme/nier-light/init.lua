@@ -61,7 +61,7 @@ local function set_groups()
         ErrorMsg = { fg = colorscheme.syntaxError },
         VertSplit = { fg = colorscheme.windowBorder, bg = bg },
         Winseparator = { link = 'VertSplit' },
-        SignColumn = { link = 'Normal' },
+        SignColumn = { bg = bg },
         Folded = { fg = colorscheme.mainText, bg = colorscheme.popupBackground },
         FoldColumn = { link = 'SignColumn' },
         IncSearch = {
@@ -81,7 +81,7 @@ local function set_groups()
         MoreMsg = { fg = colorscheme.syntaxFunction },
         NonText = { fg = utils.shade(colorscheme.editorBackground, 0.30) },
         NormalFloat = { bg = colorscheme.floatingWindowBackground },
-        NormalNC = { link = 'Normal', bg=bg },
+        NormalNC = { fg = colorscheme.mainText, bg = bg },
         Pmenu = { link = 'NormalFloat' },
         PmenuSel = { bg = colorscheme.menuOptionBackground },
         PmenuSbar = {
@@ -362,6 +362,14 @@ function theme.setup(values)
 
     theme.bufferline = { highlights = {} }
     theme.bufferline.highlights = bufferline.highlights(config)
+
+    -- Handle system theme changes (Neovim 0.11+)
+    vim.api.nvim_create_autocmd("OptionSet", {
+        pattern = "background",
+        callback = function()
+            theme.colorscheme()
+        end,
+    })
 end
 
 function theme.colorscheme()
