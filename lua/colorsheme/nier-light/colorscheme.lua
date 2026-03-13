@@ -45,7 +45,7 @@ local function get_colors()
         colorscheme.foregroundEmphasis = '#1a1917'
         colorscheme.terminalGray = '#5e5a4f'
     else
-        colorscheme.editorBackground = config.transparent and 'none' or '#1a1917'
+        colorscheme.editorBackground = config.transparent and 'none' or '#504d44'
         colorscheme.sidebarBackground = '#121211'
         colorscheme.popupBackground = '#252421'
         colorscheme.floatingWindowBackground = '#2a2926'
