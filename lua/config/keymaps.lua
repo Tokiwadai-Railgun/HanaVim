@@ -132,4 +132,6 @@ end, { desc = "Toggle folding comments larger than 4 lines" })
 -- Disable / enable inlay hints
 
 
+vim.keymap.set('n', "<C-i>", "<cmd>Inspect<cr>")
+
 --

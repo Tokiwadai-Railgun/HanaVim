@@ -13,8 +13,8 @@ local function get_colors()
         colorscheme.editorBackground = config.transparent and 'none' or '#dad4bb'
         colorscheme.sidebarBackground = '#4e4b42'
         colorscheme.popupBackground = '#dad4bb'
-        colorscheme.floatingWindowBackground = '#e0e0e0'
-        colorscheme.menuOptionBackground = '#ededed'
+        colorscheme.floatingWindowBackground = '#dad4bb'
+        colorscheme.menuOptionBackground = '#dad4bb'
 
         colorscheme.mainText = '#504d44'
         colorscheme.emphasisText = '#FF0000'
@@ -22,7 +22,7 @@ local function get_colors()
         colorscheme.inactiveText = '#9e9e9e'
         colorscheme.disabledText = '#d0d0d0'
         colorscheme.lineNumberText = '#a1a1a1'
-        colorscheme.selectedText = '#424242'
+        colorscheme.selectedText = '#504d44'
         colorscheme.inactiveSelectionText = '#757575'
 
         colorscheme.windowBorder = '#504d44'

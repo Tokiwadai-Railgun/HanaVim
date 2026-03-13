@@ -42,7 +42,7 @@ local function set_groups()
         Normal = { fg = colorscheme.mainText, bg = bg },
         LineNr = { fg = colorscheme.lineNumberText },
         ColorColumn = {
-            bg = utils.shade(colorscheme.linkText, 0.5, colorscheme.editorBackground),
+            bg = utils.shade(colorscheme.editorBackground, 0.5, colorscheme.mainText),
         },
         Conceal = {},
         Cursor = { fg = colorscheme.editorBackground, bg = colorscheme.mainText },
@@ -109,18 +109,15 @@ local function set_groups()
             bg = colorscheme.editorBackground,
             fg = colorscheme.emphasisText,
         },
-        Search = { bg = utils.shade(colorscheme.stringText, 0.40, colorscheme.bg) },
+        Search = { bg = utils.shade(colorscheme.editorBackground, 0.40, colorscheme.mainText) },
         SpellBad = { undercurl = true, sp = colorscheme.syntaxError },
         SpellCap = { undercurl = true, sp = colorscheme.syntaxFunction },
         SpellLocal = { undercurl = true, sp = colorscheme.syntaxKeyword },
         SpellRare = { undercurl = true, sp = colorscheme.warningText },
         Title = { fg = colorscheme.syntaxFunction },
         Visual = {
-            bg = utils.shade(
-                colorscheme.syntaxFunction,
-                0.40,
-                colorscheme.editorBackground
-            ),
+            bg = colorscheme.mainText,
+            fg = colorscheme.editorBackground
         },
         VisualNOS = { link = 'Visual' },
         WarningMsg = { fg = colorscheme.warningText },
