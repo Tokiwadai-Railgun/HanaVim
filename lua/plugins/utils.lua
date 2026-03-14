@@ -95,17 +95,41 @@ return {
         }
     },
     { "j-hui/fidget.nvim" },
-    -- {
-    --     "f-person/auto-dark-mode.nvim",
-    --     opts = {
-    --         set_dark_mode = function()
-    --             vim.cmd.colorscheme "rose-pine-moon"
-    --         end,
-    --         set_light_mode = function()
-    --             vim.cmd.colorscheme "rose-pine-dawn"
-    --         end,
-    --         update_interval = 3000,
-    --         fallback = "dark"
-    --     }
-    -- }
+    {
+        "f-person/auto-dark-mode.nvim",
+        opts = {
+            set_dark_mode = function()
+                local theme = require('colorsheme.nier-light.init')
+                theme.setup {
+                    theme = 'dark',
+                    transparent = false,
+                    italics = {
+                        comments = false,
+                        keywords = true,
+                        functions = true,
+                        strings = false,
+                        variables = true,
+                    },
+                }
+                theme.colorscheme()
+            end,
+            set_light_mode = function()
+                local theme = require('colorsheme.nier-light.init')
+                theme.setup {
+                    theme = 'light',
+                    transparent = false,
+                    italics = {
+                        comments = false,
+                        keywords = true,
+                        functions = true,
+                        strings = false,
+                        variables = true,
+                    },
+                }
+                theme.colorscheme()
+            end,
+            update_interval = 3000,
+            fallback = "dark"
+        }
+    }
 }
