@@ -261,6 +261,7 @@ lsp.config('tailwindcss', {
 lsp.config('ansiblels', {})
 
 lsp.config("bashls", {})
+lsp.config("dockerfile-lsp", {})
 
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
@@ -277,6 +278,7 @@ lsp.enable({
     'jdtls',
     "ansiblels",
     "clangd",
-    "bashls"
+    "bashls",
+    "dockerfile-lsp"
     -- 'tailwindcss'
 })
