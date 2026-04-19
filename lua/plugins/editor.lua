@@ -1,31 +1,44 @@
 return {
-	'tpope/vim-fugitive',                                                  -- Git commands in nvim
-	'tpope/vim-rhubarb',                                                   -- Fugitive-companion to interact with github
+	'tpope/vim-fugitive',                                                 -- Git commands in nvim
+	'tpope/vim-rhubarb',                                                  -- Fugitive-companion to interact with github
 	{ 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }, -- Add git related info in the signs columns and popups
-	'numToStr/Comment.nvim',                                               -- "gc" to comment visual regions/lines
-	'nvim-treesitter/nvim-treesitter',                                     -- Highlight, edit, and navigate code
-	'nvim-treesitter/nvim-treesitter-textobjects',                         -- Additional textobjects for treesitter
-	'nvim-treesitter/nvim-treesitter-context',                             -- Used to display current function name
+	-- 'numToStr/Comment.nvim',                                              -- "gc" to comment visual regions/lines
+	{
+		'nvim-treesitter/nvim-treesitter',
+		branch = "main",
+		lazy = false,
+		build = ':TSUpdate'
+	},                                            -- Highlight, edit, and navigate code
+	{
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		branch = "main",
+	}, -- Additional textobjects for treesitter
+	{
+		'nvim-treesitter/nvim-treesitter-context',
+	},    -- Used to display current function name
 	{
 		'neovim/nvim-lspconfig'
-	},                                             -- Collection of configurations for built-in LSP client
+	},                                  -- Collection of configurations for built-in LSP client
 	{ "onsails/lspkind.nvim" },
-	'williamboman/mason.nvim',                                             -- Manage external editor tooling i.e LSP servers
-	'williamboman/mason-lspconfig.nvim',                                   -- Automatically install language servers to stdpath
-	{'hrsh7th/cmp-nvim-lsp'},
+	'williamboman/mason.nvim',          -- Manage external editor tooling i.e LSP servers
+	'williamboman/mason-lspconfig.nvim', -- Automatically install language servers to stdpath
+	{ 'hrsh7th/cmp-nvim-lsp' },
 	"hrsh7th/cmp-path",
 	'saadparwaiz1/cmp_luasnip',
-	{ 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' },
-	config = function()
+	{
+		'hrsh7th/nvim-cmp',
+		requires = { 'hrsh7th/cmp-nvim-lsp' },
+		config = function()
 
-	end},         -- Autocompletion
-	{ 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' }, run = "make install_jsregexp" },     -- Snippet Engine and Snippet Expansion
-	'nvim-lualine/lualine.nvim',                                           -- Fancier statusline
-	'lukas-reineke/indent-blankline.nvim',                                 -- Add indentation guides even on blank lines
-	'tpope/vim-sleuth',                                                    -- Detect tabstop and shiftwidth automatically
+		end
+	},                                                                                               -- Autocompletion
+	{ 'L3MON4D3/LuaSnip',    requires = { 'saadparwaiz1/cmp_luasnip' }, run = "make install_jsregexp" }, -- Snippet Engine and Snippet Expansion
+	'nvim-lualine/lualine.nvim',                                                                     -- Fancier statusline
+	'lukas-reineke/indent-blankline.nvim',                                                           -- Add indentation guides even on blank lines
+	'tpope/vim-sleuth',                                                                              -- Detect tabstop and shiftwidth automatically
 	-- { "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
-	{'akinsho/toggleterm.nvim', version = "*", config = true},
-	{'m4xshen/autoclose.nvim'},
+	{ 'akinsho/toggleterm.nvim', version = "*", config = true },
+	{ 'm4xshen/autoclose.nvim' },
 	'evanleck/vim-svelte',
 	{
 		"folke/trouble.nvim",
@@ -67,66 +80,74 @@ return {
 	{ "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} },
 	{
 		"windwp/nvim-ts-autotag",
-		config = function() 
+		config = function()
 			require('nvim-ts-autotag').setup()
 		end
 	},
-	{ 'echasnovski/mini.cursorword', version = false },
-	{ 'echasnovski/mini.indentscope', version = '*' },
+	{ 'echasnovski/mini.cursorword',            version = false },
+	{ 'echasnovski/mini.indentscope',           version = '*' },
 	-- { -- To add copilot as to cmp
-		--     "zbirenbaum/copilot-cmp",
-		--     dependencies = "copilot.lua",
-		--     config = function()
-			--         require("copilot_cmp").setup()
-			--     end
-			-- },
-			{ 'wakatime/vim-wakatime', lazy = false },
-			{ 'mfussenegger/nvim-jdtls' }, -- Java configuration
-			-- {
-			-- 	"craftzdog/solarized-osaka.nvim",
-			-- 	lazy = false,
-			-- 	priority = 1000,
-			-- 	opts = {},
-			-- },
-			-- {
-			-- 	"rose-pine/neovim",
-			-- 	name="rose-pine",
-			-- },
-			{
-				-- Make sure to set this up properly if you have lazy=true
-				'MeanderingProgrammer/render-markdown.nvim',
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
-			},
-			{
-				"folke/todo-comments.nvim",
-				dependencies = { "nvim-lua/plenary.nvim" }
-			},
-			{ "youyoumu/pretty-ts-errors.nvim" },
-			{
-				'Thiago4532/mdmath.nvim',
-				dependencies = {
-					'nvim-treesitter/nvim-treesitter',
-				},
-			},
-			{ "mfussenegger/nvim-ansible" },
-			{ "mfussenegger/nvim-ansible" },
-			{
-				"soemre/commentless.nvim",
-				cmd = "Commentless",
-				dependencies = {
-					"nvim-treesitter/nvim-treesitter",
-				}
+	--     "zbirenbaum/copilot-cmp",
+	--     dependencies = "copilot.lua",
+	--     config = function()
+	--         require("copilot_cmp").setup()
+	--     end
+	-- },
+	{ 'wakatime/vim-wakatime',                  lazy = false },
+	{ 'mfussenegger/nvim-jdtls' }, -- Java configuration
+	-- {
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- },
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name="rose-pine",
+	-- },
+	{
+		-- Make sure to set this up properly if you have lazy=true
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = {
+			file_types = { "markdown", "Avante" },
 		},
-		{
-				"linrongbin16/gitlinker.nvim",
-				cmd = "GitLink",
-				opts = {},
-				keys = {
-						{ "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-						{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
-				},
+		ft = { "markdown", "Avante" },
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
+	{ "youyoumu/pretty-ts-errors.nvim" },
+	{
+		'Thiago4532/mdmath.nvim',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+		},
+	},
+	{ "mfussenegger/nvim-ansible" },
+	{ "mfussenegger/nvim-ansible" },
+	{
+		"soemre/commentless.nvim",
+		cmd = "Commentless",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
 		}
+	},
+	{
+		"linrongbin16/gitlinker.nvim",
+		cmd = "GitLink",
+		opts = {},
+		keys = {
+			{ "<leader>gy", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
+			{ "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+		},
+	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+		end
+	}
 }

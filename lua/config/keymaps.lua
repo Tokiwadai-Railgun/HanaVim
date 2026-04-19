@@ -1,6 +1,3 @@
--- Enable Comment.nvimkey
-require('Comment').setup()
-
 -- Gitsigns
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
@@ -66,6 +63,9 @@ vim.keymap.set('n', '<leader>;', '<cmd>Dashboard<cr>')
 -- correct error using lsp
 vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action, { desc = "Correct Error"})
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = "Rename Variable"})
+vim.keymap.set('n', '<leader>lf', function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "LSP Format" })
 
 -- In case tabstop is not set up automatically
 vim.keymap.set('n', '<leader>lt', '<cmd>set tabstop=2 shiftwidth=4<cr>')

@@ -76,66 +76,53 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = {'c', 'cpp', 'go', 'lua', 'python', 'rust', "prisma"},
+require('nvim-treesitter').install({
+'c', 'cpp', 'go', 'lua', 'python', 'rust'
+})
 
-  highlight = { enable = true },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      -- TODO: I'm not sure for this one.
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
+-- select
+for lhs, query in pairs({
+  ['af'] = '@function.outer',
+  ['if'] = '@function.inner',
+  ['ac'] = '@class.outer',
+  ['ic'] = '@class.inner',
+}) do
+  vim.keymap.set({ 'x', 'o' }, lhs, function()
+    select.select_textobject(query, 'textobjects')
+  end, { desc = 'Select ' .. query })
+end
+
+-- move
+local move_maps = {
+  goto_next_start     = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
+  goto_next_end       = { [']M'] = '@function.outer', [']['] = '@class.outer' },
+  goto_previous_start = { ['[m'] = '@function.outer', ['[['] = '@class.outer' },
+  goto_previous_end   = { ['[M'] = '@function.outer', ['[]'] = '@class.outer' },
 }
+for method, maps in pairs(move_maps) do
+  for lhs, query in pairs(maps) do
+    vim.keymap.set({ 'n', 'x', 'o' }, lhs, function()
+      move[method](query, 'textobjects')
+    end, { desc = method .. ' ' .. query })
+  end
+end
+
+-- swap
+vim.keymap.set('n', '<leader>a', function()
+  swap.swap_next('@parameter.inner')
+end, { desc = 'Swap next parameter' })
+vim.keymap.set('n', '<leader>A', function()
+  swap.swap_previous('@parameter.inner')
+end, { desc = 'Swap previous parameter' })
+
+require('nvim-treesitter-textobjects').setup({
+  select = {
+    lookahead = true,
+  },
+  move = {
+    set_jumps = true,
+  },
+})
 
 
 -- putting this at the end so colors are loaded after plugins
