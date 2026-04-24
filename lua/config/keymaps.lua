@@ -123,10 +123,7 @@ vim.keymap.set('n', "<leader>to", "<cmd>tabonly<cr>", { desc = "Close all tabs e
 vim.keymap.set('n', "<leader>cc", "<cmd>make %:r<cr>", { desc = "compile the current file" })
 vim.keymap.set('n', "<leader>cr", "<cmd>!./%:r<cr>", { desc = "run the previously compiled file" })
 
--- Fold multiline commennts
-local commentless = require("commentless")
 vim.keymap.set('n', "<C-c>", function ()
-    commentless.toggle() -- for the number of minimal lines see index.lua, vim.opt.foldminlines property
 end, { desc = "Toggle folding comments larger than 4 lines" })
 
 -- Disable / enable inlay hints
