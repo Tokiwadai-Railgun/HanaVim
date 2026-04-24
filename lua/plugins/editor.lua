@@ -8,14 +8,14 @@ return {
 		branch = "main",
 		lazy = false,
 		build = ':TSUpdate'
-	},                                            -- Highlight, edit, and navigate code
+	}, -- Highlight, edit, and navigate code
 	{
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		branch = "main",
 	}, -- Additional textobjects for treesitter
 	{
 		'nvim-treesitter/nvim-treesitter-context',
-	},    -- Used to display current function name
+	}, -- Used to display current function name
 	{
 		'neovim/nvim-lspconfig'
 	},                                  -- Collection of configurations for built-in LSP client
@@ -31,11 +31,11 @@ return {
 		config = function()
 
 		end
-	},                                                                                               -- Autocompletion
+	},                                                                                                  -- Autocompletion
 	{ 'L3MON4D3/LuaSnip',    requires = { 'saadparwaiz1/cmp_luasnip' }, run = "make install_jsregexp" }, -- Snippet Engine and Snippet Expansion
-	'nvim-lualine/lualine.nvim',                                                                     -- Fancier statusline
-	'lukas-reineke/indent-blankline.nvim',                                                           -- Add indentation guides even on blank lines
-	'tpope/vim-sleuth',                                                                              -- Detect tabstop and shiftwidth automatically
+	'nvim-lualine/lualine.nvim',                                                                        -- Fancier statusline
+	'lukas-reineke/indent-blankline.nvim',                                                              -- Add indentation guides even on blank lines
+	'tpope/vim-sleuth',                                                                                 -- Detect tabstop and shiftwidth automatically
 	-- { "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
 	{ 'akinsho/toggleterm.nvim', version = "*", config = true },
 	{ 'm4xshen/autoclose.nvim' },
@@ -149,5 +149,11 @@ return {
 			-- VimTeX configuration goes here, e.g.
 			vim.g.vimtex_view_method = "zathura"
 		end
+	},
+	{
+		'dyatlovk/symfony-nvim',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+		},
 	}
 }
