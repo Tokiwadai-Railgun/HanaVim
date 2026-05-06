@@ -129,8 +129,11 @@ require('nvim-treesitter-textobjects').setup({
 -- require('config.colors')
 vim.g.ansible_extra_conf_files_with_extensions = 1
 
-vim.opt.foldminlines = 4 -- only fold comment greater than 4 lines
-vim.opt.fillchars = "fold: "
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+-- vim.opt.foldminlines = 4 -- only fold comment greater than 4 lines
+-- vim.opt.fillchars = "fold: "
 
 -- vim.cmd.colorscheme "automata"
 local theme = require('colorsheme.nier-light.init')

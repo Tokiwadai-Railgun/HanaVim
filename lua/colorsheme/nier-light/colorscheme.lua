@@ -56,7 +56,7 @@ local function get_colors()
         colorscheme.commandText = '#bab5a1'
         colorscheme.inactiveText = '#5e5a4f'
         colorscheme.disabledText = '#3b3932'
-        colorscheme.lineNumberText = '#4e4b42'
+        colorscheme.lineNumberText = '#85806d'
         colorscheme.selectedText = '#ffffff'
         colorscheme.inactiveSelectionText = '#3b3932'
 
@@ -74,7 +74,7 @@ local function get_colors()
         colorscheme.successText = '#8fb58d'
         colorscheme.errorText = '#9d312f'
         colorscheme.specialKeyword = '#c0b9a0'
-        colorscheme.commentText = '#5e5a4f'
+        colorscheme.commentText = '#a09b8a'
         colorscheme.syntaxOperator = '#bab5a1'
         colorscheme.foregroundEmphasis = '#f2efdf'
         colorscheme.terminalGray = '#3b3932'

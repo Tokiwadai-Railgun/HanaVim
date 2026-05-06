@@ -48,3 +48,35 @@ vim.api.nvim_create_autocmd("FileType", {
         )
     end
 })
+
+-- Auto fold long comments when entering a file
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufWinEnter" }, {
+  group = vim.api.nvim_create_augroup("AutoFoldComments", { clear = true }),
+  callback = function ()
+    vim.defer_fn(function ()
+      local bufnr = vim.api.nvim_get_current_buf()
+      local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+      if not ok or not parser then return end
+
+      local tree = parser:parse()[1]
+      local root = tree:root()
+      local lang = parser:lang()
+
+      local query_string = [[
+        (comment) @comment
+        (line_doc_comment) @comment
+        (block_doc_comment) @comment
+      ]]
+
+      local ok_query, query = pcall(vim.treesitter.query.parse, lang, query_string)
+      if not ok_query then return end
+
+      for _, node in query:iter_captures(root, bufnr, 0, -1) do
+        local start_now, _, end_row, _ = node:range()
+        if (end_row - start_now) >= 4 then
+          pcall(vim.cmd, string.format("%d, %dfold", start_now + 1, end_row))
+        end
+      end
+    end, 150)
+  end
+})

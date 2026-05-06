@@ -68,5 +68,3 @@ require("todo-comments").setup({
 require('pretty-ts-errors').setup({
       auto_open = false
 })
-
-require('commentless').setup({})

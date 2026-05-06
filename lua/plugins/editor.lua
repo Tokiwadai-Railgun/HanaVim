@@ -127,13 +127,6 @@ return {
 	{ "mfussenegger/nvim-ansible" },
 	{ "mfussenegger/nvim-ansible" },
 	{
-		"soemre/commentless.nvim",
-		cmd = "Commentless",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		}
-	},
-	{
 		"linrongbin16/gitlinker.nvim",
 		cmd = "GitLink",
 		opts = {},
