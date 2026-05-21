@@ -263,6 +263,9 @@ lsp.config('ansiblels', {})
 lsp.config("bashls", {})
 lsp.config("dockerfile-lsp", {})
 
+-- OCaml
+lsp.config("ocamllsp", {})
+
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
     'lua_ls',
@@ -279,6 +282,7 @@ lsp.enable({
     "ansiblels",
     "clangd",
     "bashls",
-    "dockerfile-lsp"
+    "dockerfile-lsp",
+    "ocamllsp"
     -- 'tailwindcss'
 })

@@ -1,5 +1,5 @@
-vim.api.nvim_create_autocmd({"BufReadPost", "BufWinEnter"}, {
-  callback = function ()
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufWinEnter" }, {
+  callback = function()
     vim.o.tabstop = 2
     vim.o.shiftwidth = 2
   end
@@ -8,14 +8,14 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufWinEnter"}, {
 -- vim.cmd("highlight BorderBG guibg=NONE guifg=#00ff00")
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable(true, {args.buf})
-        end
-        -- whatever other lsp config you want
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { args.buf })
     end
+    -- whatever other lsp config you want
+  end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -26,34 +26,46 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "rust" },
-    callback = function ()
-        local bufnr = vim.api.nvim_get_current_buf()
-        vim.keymap.set(
-            "n",
-            "<leader>a",
-            function()
-                vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-                -- or vim.lsp.buf.codeAction() if you don't want grouping.
-            end,
-            { silent = true, buffer = bufnr }
-        )
-        vim.keymap.set(
-            "n",
-            "K",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
-            function()
-                vim.cmd.RustLsp({'hover', 'actions'})
-                end,
-            { silent = true, buffer = bufnr }
-        )
-    end
+  pattern = { "rust", "c", "cpp" },
+  callback = function()
+    vim.schedule(function()
+      vim.bo.shiftwidth = 4
+      vim.bo.tabstop = 4
+      vim.bo.softtabstop = 4
+      vim.bo.expandtab = true
+    end)
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "rust" },
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.keymap.set(
+      "n",
+      "<leader>a",
+      function()
+        vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+        -- or vim.lsp.buf.codeAction() if you don't want grouping.
+      end,
+      { silent = true, buffer = bufnr }
+    )
+    vim.keymap.set(
+      "n",
+      "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+      function()
+        vim.cmd.RustLsp({ 'hover', 'actions' })
+      end,
+      { silent = true, buffer = bufnr }
+    )
+  end
 })
 
 -- Auto fold long comments when entering a file
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWinEnter" }, {
   group = vim.api.nvim_create_augroup("AutoFoldComments", { clear = true }),
-  callback = function ()
-    vim.defer_fn(function ()
+  callback = function()
+    vim.defer_fn(function()
       local bufnr = vim.api.nvim_get_current_buf()
       local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
       if not ok or not parser then return end

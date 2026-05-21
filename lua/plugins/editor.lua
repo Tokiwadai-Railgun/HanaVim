@@ -106,25 +106,10 @@ return {
 	-- 	name="rose-pine",
 	-- },
 	{
-		-- Make sure to set this up properly if you have lazy=true
-		'MeanderingProgrammer/render-markdown.nvim',
-		opts = {
-			file_types = { "markdown", "Avante" },
-		},
-		ft = { "markdown", "Avante" },
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 	{ "youyoumu/pretty-ts-errors.nvim" },
-	{
-		'Thiago4532/mdmath.nvim',
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-		},
-	},
-	{ "mfussenegger/nvim-ansible" },
 	{ "mfussenegger/nvim-ansible" },
 	{
 		"linrongbin16/gitlinker.nvim",
@@ -148,5 +133,29 @@ return {
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
+	},
+	-- OCaml configuration
+	{
+		"tarides/ocaml.nvim",
+		config = function()
+			require("ocaml").setup()
+		end
+	},
+	-- Maths
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {
+			latex = {
+				enabled = true,
+				converter = { 'utftex' }, -- use utftex exclusively, or { 'utftex', 'latex2text' } for fallback
+				highlight = 'RenderMarkdownMath',
+				position = 'center',
+			},
+		}
 	}
 }
