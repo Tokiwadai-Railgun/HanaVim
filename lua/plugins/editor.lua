@@ -157,5 +157,10 @@ return {
 				position = 'center',
 			},
 		}
+	},
+	{
+		"kais-radwan/ascii-mermaid",
+		ft = "markdown",
+		opts = {},
 	}
 }

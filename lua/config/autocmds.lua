@@ -1,10 +1,3 @@
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufWinEnter" }, {
-  callback = function()
-    vim.o.tabstop = 2
-    vim.o.shiftwidth = 2
-  end
-})
-
 -- vim.cmd("highlight BorderBG guibg=NONE guifg=#00ff00")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -26,7 +19,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "rust", "c", "cpp" },
+  pattern = { "rust", "c", "cpp", "php" },
   callback = function()
     vim.schedule(function()
       vim.bo.shiftwidth = 4

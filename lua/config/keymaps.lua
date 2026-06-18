@@ -120,8 +120,9 @@ vim.keymap.set('n', "<leader>tc", "<cmd>tabclose<cr>", { desc = "close a tab" })
 vim.keymap.set('n', "<leader>to", "<cmd>tabonly<cr>", { desc = "Close all tabs escept the current" })
 
 
-vim.keymap.set('n', "<leader>cc", "<cmd>make %:r<cr>", { desc = "compile the current file" })
-vim.keymap.set('n', "<leader>cr", "<cmd>!./%:r<cr>", { desc = "run the previously compiled file" })
+vim.keymap.set('n', "<leader>cc", "<cmd>make<cr>", { desc = "Use : make" })
+vim.keymap.set('n', "<leader>cb", "<cmd>make build<cr>", { desc = "Use : make build" })
+vim.keymap.set('n', "<leader>cr", "<cmd>make run<cr>", { desc = "Use : make run" })
 
 vim.keymap.set('n', "<C-c>", function ()
 end, { desc = "Toggle folding comments larger than 4 lines" })

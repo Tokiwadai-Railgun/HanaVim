@@ -145,5 +145,9 @@ return {
         -- languages = {}, -- override or add new parser sources
       })
     end
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
   }
 }
