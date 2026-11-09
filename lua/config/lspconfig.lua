@@ -3,6 +3,10 @@ require("mason").setup()
 
 local lsp = vim.lsp
 
+vim.diagnostic.config({
+  virtual_text = true
+})
+
 -- === 1. Capabilities Setup (Crucial for Autocompletion) ===
 -- We define this locally to pass it explicitly to servers that need it.
 local capabilities = vim.tbl_deep_extend(
