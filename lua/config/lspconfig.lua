@@ -24,14 +24,14 @@ end
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
-  opts.border = opts.border or "rounded"   -- Force 'rounded' border
+  opts.border = opts.border or "rounded" -- Force 'rounded' border
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- === Global default configuration ===
 lsp.config('*', {
   root_markers = { '.git' },
-  capabilities = capabilities,   -- Apply globally
+  capabilities = capabilities, -- Apply globally
 })
 
 -- vim.api.nvim_set_hl(0, "FloatBorder", { link = "MiniFilesBorder" })
@@ -68,10 +68,10 @@ lsp.config('ts_ls', {
   cmd = { 'typescript-language-server', '--stdio' },
   -- Add 'vue' to filetypes so TS works in <script> tags
   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'vue' },
-  capabilities = capabilities,   -- Explicitly passed for safety
+  capabilities = capabilities, -- Explicitly passed for safety
   init_options = {
     plugins = {
-      vue_plugin,       -- Load the Vue plugin
+      vue_plugin, -- Load the Vue plugin
     },
   },
   settings = {
@@ -98,7 +98,7 @@ lsp.config('vue_ls', {
   capabilities = capabilities,
   init_options = {
     vue = {
-      hybridMode = true,       -- Hand off JS/TS work to ts_ls
+      hybridMode = true, -- Hand off JS/TS work to ts_ls
     },
     typescript = {
       -- Point to the typescript installed by Mason to ensure template parsing works
@@ -124,6 +124,17 @@ lsp.config('phpactor', {
       '/dev/**/*',
     },
   },
+  on_attach = function(client, bufnr)
+    -- enables :lua vim.lsp.buf.format()
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+      })
+    end
+  end,
 })
 lsp.config("twiggy_language_server", {})
 
@@ -225,7 +236,7 @@ cmp.setup {
 
 -- === Svelte ===
 lsp.config('svelte', {
-  cmd = { 'svelteserver', '--stdio' },   -- default Mason binary
+  cmd = { 'svelteserver', '--stdio' }, -- default Mason binary
   filetypes = { 'svelte' },
   root_markers = { 'svelte.config.js', 'svelte.config.cjs', 'svelte.config.ts', 'package.json', '.git' },
   settings = {
@@ -271,16 +282,20 @@ lsp.config("ocamllsp", {})
 --Python
 lsp.config("pyright", {})
 
+-- Zig
+lsp.config("zls", {});
+lsp.config("zlint", {});
+
 -- === Auto-enable all configured LSPs ===
 lsp.enable({
   'lua_ls',
   'ts_ls',
-  'vue_ls',   -- ADDED
+  'vue_ls', -- ADDED
   'phpactor',
   'gopls',
   -- 'intelephense',
   'asm_lsp',
-  'emmet_language_server',   -- ADDED (replaces ls_emmet)
+  'emmet_language_server', -- ADDED (replaces ls_emmet)
   'prismals',
   'svelte',
   'jdtls',
@@ -291,7 +306,9 @@ lsp.enable({
   "ocamllsp",
   "pyright",
   "php_cs_fixer",
-  "twiggy_language_server"
+  "twiggy_language_server",
+  "zls",
+  "zlint"
   -- 'tailwindcss'
 })
 
@@ -306,7 +323,7 @@ require("conform").setup({
       command = "php-cs-fixer",
       args = {
         "fix",
-        "--rules=@PSR12",   -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
+        "--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
         "$FILENAME",
       },
       stdin = false,

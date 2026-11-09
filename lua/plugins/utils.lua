@@ -149,5 +149,10 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {},
+  },
+  {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
   }
+
 }

@@ -1,6 +1,6 @@
 return {
-	'tpope/vim-fugitive',                                                 -- Git commands in nvim
-	'tpope/vim-rhubarb',                                                  -- Fugitive-companion to interact with github
+	'tpope/vim-fugitive',                                               -- Git commands in nvim
+	'tpope/vim-rhubarb',                                                -- Fugitive-companion to interact with github
 	{ 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }, -- Add git related info in the signs columns and popups
 	-- 'numToStr/Comment.nvim',                                              -- "gc" to comment visual regions/lines
 	{
@@ -18,9 +18,9 @@ return {
 	}, -- Used to display current function name
 	{
 		'neovim/nvim-lspconfig'
-	},                                  -- Collection of configurations for built-in LSP client
+	},                                -- Collection of configurations for built-in LSP client
 	{ "onsails/lspkind.nvim" },
-	'williamboman/mason.nvim',          -- Manage external editor tooling i.e LSP servers
+	'williamboman/mason.nvim',        -- Manage external editor tooling i.e LSP servers
 	'williamboman/mason-lspconfig.nvim', -- Automatically install language servers to stdpath
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	"hrsh7th/cmp-path",
@@ -31,11 +31,11 @@ return {
 		config = function()
 
 		end
-	},                                                                                                  -- Autocompletion
+	},                                                                                                -- Autocompletion
 	{ 'L3MON4D3/LuaSnip',    requires = { 'saadparwaiz1/cmp_luasnip' }, run = "make install_jsregexp" }, -- Snippet Engine and Snippet Expansion
-	'nvim-lualine/lualine.nvim',                                                                        -- Fancier statusline
-	'lukas-reineke/indent-blankline.nvim',                                                              -- Add indentation guides even on blank lines
-	'tpope/vim-sleuth',                                                                                 -- Detect tabstop and shiftwidth automatically
+	'nvim-lualine/lualine.nvim',                                                                      -- Fancier statusline
+	'lukas-reineke/indent-blankline.nvim',                                                            -- Add indentation guides even on blank lines
+	'tpope/vim-sleuth',                                                                               -- Detect tabstop and shiftwidth automatically
 	-- { "catppuccin/nvim", as = "catppuccin" },                              -- Colorsheme
 	{ 'akinsho/toggleterm.nvim', version = "*", config = true },
 	{ 'm4xshen/autoclose.nvim' },
@@ -125,7 +125,8 @@ return {
 		lazy = false, -- we don't want to lazy load VimTeX
 		init = function()
 			-- VimTeX configuration goes here, e.g.
-			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_view_method = "general"
+			vim.g.vimtex_view_general_viewer = "okular"
 		end
 	},
 	{
@@ -162,5 +163,9 @@ return {
 		"kais-radwan/ascii-mermaid",
 		ft = "markdown",
 		opts = {},
-	}
+	},
+	{
+		'stevearc/conform.nvim',
+		opts = {},
+	},
 }
