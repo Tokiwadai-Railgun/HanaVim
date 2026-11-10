@@ -12,6 +12,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  pattern= { "rust", "c", "cpp" },
+  callback = function ()
+    vim.bo.shiftwidth = 4;
+    vim.bo.tabstop = 4;
+    vim.bo.softtabstop = 4;
+    vim.bo.expandtab = true;
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern= { "typescript", "ts", "javascript", "js", "svelte" },
+  callback = function ()
+    print("Svelt edetected")
+    vim.bo.shiftwidth = 2;
+    vim.bo.tabstop = 2;
+    vim.bo.softtabstop = 2;
+    vim.bo.expandtab = false;
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
   pattern = { "typescript", "typescriptreact" }, -- or add "typescript.tsx" if needed
   callback = function()
     vim.keymap.set("n", "gl", ":PrettyTsError<CR>", { buffer = true, silent = true })
